@@ -16,7 +16,7 @@ class Task {
         this.isComplete = false;
         this.steps = [];
 
-        if (! this.gulpTask) {
+        if (!this.gulpTask) {
             this.gulpTask = gulpTask;
         }
 
@@ -50,7 +50,7 @@ class Task {
      * @return {string}
      */
     ucName() {
-        return this.name.substr(0,1).toUpperCase() +
+        return this.name.substr(0, 1).toUpperCase() +
             this.name.substr(1);
     }
 
@@ -136,7 +136,7 @@ class Task {
      * @param {object} options
      */
     initSourceMaps(options = {}) {
-        if (! Elixir.config.sourcemaps) {
+        if (!Elixir.config.sourcemaps) {
             return this.stream();
         }
 
@@ -148,7 +148,7 @@ class Task {
      * Write to the sourcemaps file.
      */
     writeSourceMaps() {
-        if (! Elixir.config.sourcemaps) {
+        if (!Elixir.config.sourcemaps) {
             return this.stream();
         }
 
@@ -163,7 +163,7 @@ class Task {
      * Minify the relevant CSS or JS files.
      */
     minify() {
-        if (! Elixir.inProduction) {
+        if (!Elixir.inProduction) {
             return this.stream();
         }
 
@@ -237,7 +237,7 @@ class Task {
 
         // As long as we're not triggering the entire
         // suite, we can log the stats for this task.
-        if (! Elixir.isRunningAllTasks) {
+        if (!Elixir.isRunningAllTasks) {
             Elixir.log.task(this);
         }
     }
@@ -259,7 +259,8 @@ class Task {
      * Get a generic stream to return.
      */
     stream() {
-        return map(function () {});
+        return map(function () {
+        });
     }
 }
 

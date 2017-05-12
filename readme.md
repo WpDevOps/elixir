@@ -1,15 +1,19 @@
-# Laravel Elixir
+# WpDevOps Elixir
 
 ## Introduction
 
-Laravel Elixir provides a clean, fluent API for defining basic Gulp tasks for your Laravel application. Elixir supports several common CSS and JavaScript pre-processors, and even testing tools.
+WpDevOps Elixir is a fork of the 
+grate [Laravel Elixir](https://github.com/laravel/elixir) 
+by [Jeffrey Way](https://github.com/JeffreyWay), Wee just made some changes to feet our needs :)
 
-If you've ever been confused about how to get started with Gulp and asset compilation, you will love Laravel Elixir!
+WpDevOps Elixir provides a clean, fluent API for defining basic Gulp tasks for your WpDevOps WordPress Plugin\Theme. Elixir supports several common CSS and JavaScript pre-processors, and even testing tools.
 
-## Official Documentation
+If you've ever been confused about how to get started with Gulp and asset compilation, you will love Elixir!
 
-Documentation for Elixir can be found on the [Laravel website](http://laravel.com/docs/elixir).
+## Documentation
+
+soon...
 
 ## License
 
-Laravel Elixir is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+WpDevOps Elixir is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

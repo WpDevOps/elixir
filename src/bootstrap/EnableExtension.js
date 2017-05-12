@@ -10,7 +10,7 @@ Elixir.extend = function (name, callback) {
     // override default behavior.
     if (this.mixins[name]) return;
 
-    this.mixins[name] = function() {
+    this.mixins[name] = function () {
         callback.apply(this, arguments);
 
         return this.mixins;
@@ -26,7 +26,7 @@ Elixir.extend = function (name, callback) {
  */
 Elixir.registerInstallInstruction = function (name, command) {
     Elixir.extend(name, function () {
-        new Elixir.Task(name, function() {
+        new Elixir.Task(name, function () {
             Elixir.log
                 .error('Installation Required')
                 .error(`To use "mix.${name}()", please run the following command, and then trigger gulp again.`)

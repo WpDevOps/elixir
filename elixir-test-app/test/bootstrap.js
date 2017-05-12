@@ -1,4 +1,4 @@
-import Elixir from 'laravel-elixir';
+import Elixir from 'wpdevops-elixir';
 import chai from 'chai';
 import gulp from 'gulp';
 import remove from 'rimraf';
@@ -20,7 +20,7 @@ global.runGulp = assertions => {
     gulp.start('default', () => {
         assertions();
 
-        remove.sync('./public');
+        remove.sync('./dist');
         remove.sync('./compress/all.js');
         remove.sync('./compress/all.css');
         remove.sync('./compress/file.min.js');

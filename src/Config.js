@@ -37,7 +37,7 @@ const config = {
      |
      */
 
-    assetsPath: 'resources/assets',
+    assetsPath: 'assets',
 
     /*
      |----------------------------------------------------------------
@@ -50,7 +50,7 @@ const config = {
      |
      */
 
-    publicPath: 'public',
+    publicPath: 'dist',
 
     /*
      |----------------------------------------------------------------
@@ -63,7 +63,7 @@ const config = {
      |
      */
 
-    appPath: 'app',
+    appPath: 'lib',
 
     /*
      |----------------------------------------------------------------
@@ -76,7 +76,7 @@ const config = {
      |
      */
 
-    viewPath: 'resources/views',
+    viewPath: 'templates',
 
     /*
      |----------------------------------------------------------------
@@ -147,7 +147,7 @@ const config = {
          |
          */
 
-        folder: 'css',
+        folder: 'styles',
 
         /*
          |----------------------------------------------------------------
@@ -160,7 +160,7 @@ const config = {
          |
          */
 
-        outputFolder: 'css',
+        outputFolder: 'styles',
 
         /*
          |----------------------------------------------------------------
@@ -211,7 +211,7 @@ const config = {
          */
 
         sass: {
-            folder: 'sass',
+            folder: 'styles',
 
             search: '/**/*.+(sass|scss)',
 
@@ -234,7 +234,7 @@ const config = {
          */
 
         less: {
-            folder: 'less',
+            folder: 'styles',
 
             search: '/**/*.less',
 
@@ -356,7 +356,7 @@ const config = {
 
     browserSync: {
         // http://www.browsersync.io/docs/options/
-        proxy: 'homestead.app',
+        proxy: 'grape.dev',
         reloadOnRestart : true,
         notify: true
     },
@@ -394,7 +394,7 @@ config.get = function(path) {
     // we can assume that the user wants to prefix the
     // given base url to their config path. Useful!
 
-    if (segments[0] == 'assets' || segments[0] == 'public') {
+    if (segments[0] == 'assets' || segments[0] == 'dist') {
         basePath = config[segments.shift()+'Path'];
     }
 
