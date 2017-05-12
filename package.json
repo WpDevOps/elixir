@@ -1,7 +1,7 @@
 {
-  "name": "laravel-elixir",
-  "version": "6.0.0-15",
-  "description": "Laravel Elixir Core",
+  "name": "wpdevops-elixir",
+  "version": "1.0.0",
+  "description": "Laravel Elixir Core for WpDevOps Grape starter theme",
   "main": "dist/index.js",
   "scripts": {
     "compile": "babel --presets=es2015 -d dist/ src/",
@@ -10,18 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/laravel/elixir"
+    "url": "https://github.com/WpDevOps/elixir"
   },
   "keywords": [
+    "WpDevOps",
+    "wordpress",
     "laravel",
     "elixir",
     "gulp"
   ],
   "author": {
-    "name": "Jeffrey Way"
+    "name": "Shemi Perez"
   },
   "license": "MIT",
-  "homepage": "https://github.com/laravel/elixir",
+  "homepage": "https://github.com/WpDevOps/elixir",
   "dependencies": {
     "clean-css": "^3.4.12",
     "cli-table": "^0.3.1",
