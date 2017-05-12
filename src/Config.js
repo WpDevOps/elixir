@@ -58,7 +58,7 @@ const config = {
      |----------------------------------------------------------------
      |
      | The app path, you guessed it, specifies the path to the app
-     | folder in your project. If using Laravel, then you won't
+     | folder in your project. If using WpDevOps theme\plugin, then you won't
      | need to modify this path. Otherwise modify as needed.
      |
      */
