@@ -66,7 +66,7 @@ class TaskReporter {
 
         src = Array.isArray(src) ? src : [src];
 
-        return src.map(file => this.colorize(file)).join('\n');
+        return src.map(file => this.colorize(file, task.deletesSourceAfter)).join('\n');
     }
 
 
@@ -75,14 +75,15 @@ class TaskReporter {
      * based upon its existence.
      *
      * @param  {string}  file
+     * @param {boolean} shouldNotExists
      * @return {string}
      */
-    colorize(file) {
-        if (this.fileExists(file)) {
+    colorize(file, shouldNotExists) {
+        if (this.fileExists(file) || shouldNotExists) {
             return gutil.colors.green(file);
         }
 
-        return gutil.colors.bgRed(file);
+        return gutil.colors.black.bgRed(file);
     }
 
 

@@ -15,6 +15,7 @@ class Task {
         this.watchers = [];
         this.isComplete = false;
         this.steps = [];
+        this.deletesSourceAfter = false;
 
         if (!this.gulpTask) {
             this.gulpTask = gulpTask;

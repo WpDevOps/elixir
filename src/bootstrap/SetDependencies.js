@@ -11,6 +11,7 @@ Elixir.mixins = {};
 /**
  * Determine if Elixir is in "production" mode.
  */
+
 if (Elixir.inProduction = gutils.env.production) {
     process.env.NODE_ENV = 'production';
 }

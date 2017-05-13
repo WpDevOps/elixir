@@ -2,10 +2,12 @@ import Elixir from '@wpdevops/elixir';
 import chai from 'chai';
 import gulp from 'gulp';
 import remove from 'rimraf';
+import gutils from 'gulp-util';
 
 global.fs = require('fs');
 global.should = chai.should();
 global.expect = chai.expect;
+global.gutils = gutils;
 
 global.shouldExist = (file, contents) => {
     fs.existsSync(file).should.be.true;
@@ -17,7 +19,13 @@ global.shouldExist = (file, contents) => {
     }
 };
 
-global.runGulp = assertions => {
+global.shouldNotExist = (file, contents) => {
+    fs.existsSync(file).should.be.false;
+};
+
+global.runGulp = (assertions, inProduction = false) => {
+    Elixir.inProduction = inProduction;
+
     gulp.start('default', () => {
         assertions();
 

@@ -13,6 +13,7 @@ class VersionTask extends Elixir.Task {
 
         this.distPath = Elixir.config.distPath;
         this.buildPath = this.output.baseDir;
+        this.deletesSourceAfter = true;
 
         if (this.src.baseDir == this.buildPath) {
             if (this.src.path.find(path => /\*/.test(path))) {
@@ -42,27 +43,31 @@ class VersionTask extends Elixir.Task {
      * @param {Elixir.Plugins} $
      */
     gulpTask($) {
-        this.recordStep('Versioning');
 
         this.deleteManifestFiles();
 
-        if(! Elixir.inProduction) {
+        console.log(Elixir.inProduction);
+
+        if (! Elixir.inProduction) {
             return (
                 gulp
-                    .src(this.src.path, { base: `./${this.distPath}` })
-                    .pipe(this.recordStep('Skipping versioning'))
+                    .src(this.src.path, {base: `./${this.distPath}`})
+                    .pipe(this.skip(gulp))
             );
         }
 
+        this.recordStep('Versioning');
+
         return (
             gulp
-            .src(this.src.path, { base: `./${this.distPath}` })
-            .pipe($.rev())
-            .pipe(this.updateVersionedPathInFiles($))
-            .pipe(gulp.dest(this.buildPath))
-            .pipe($.rev.manifest('manifest.json'))
-            .pipe(this.saveAs(gulp))
-            .on('end', this.copyMaps.bind(this))
+                .src(this.src.path, {base: `./${this.distPath}`})
+                .pipe($.rev())
+                .pipe(this.updateVersionedPathInFiles($))
+                .pipe(gulp.dest(this.buildPath))
+                .pipe($.rev.manifest('manifest.json'))
+                .pipe(this.saveAs(gulp))
+                .on('end', this.copyMaps.bind(this))
+                .on('end', this.deleteOriginalFiles.bind(this))
         );
     }
 
@@ -74,6 +79,16 @@ class VersionTask extends Elixir.Task {
         this.watch(this.src.path);
     }
 
+    /**
+     * Not in production record
+     *
+     * @param {object} gulp
+     */
+    skip(gulp) {
+        this.recordStep('Skipping versioning, not in production');
+
+        return gulp;
+    }
 
     /**
      * Update files to point to the newly versioned file name.
@@ -85,7 +100,7 @@ class VersionTask extends Elixir.Task {
 
         this.recordStep('Rewriting File Paths');
 
-        return $.revReplace({ prefix: buildFolder + '/' });
+        return $.revReplace({prefix: buildFolder + '/'});
     }
 
 
@@ -95,15 +110,34 @@ class VersionTask extends Elixir.Task {
     deleteManifestFiles() {
         let manifest = `${this.buildPath}/manifest.json`;
 
-        if (! fs.existsSync(manifest)) return;
+        if (!fs.existsSync(manifest)) return;
 
         manifest = JSON.parse(fs.readFileSync(manifest));
 
         for (let key in manifest) {
-            del.sync(`${this.buildPath}/${manifest[key]}`, { force: true });
+            del.sync(`${this.buildPath}/${manifest[key]}`, {force: true});
         }
     }
 
+    /**
+     * Delete the original files
+     *
+     * @param gulp
+     * @returns {*}
+     */
+    deleteOriginalFiles() {
+        let manifest = `${this.buildPath}/manifest.json`;
+
+        if (!fs.existsSync(manifest)) return;
+
+        this.recordStep('Deleting source filed');
+
+        manifest = JSON.parse(fs.readFileSync(manifest));
+
+        for (let key in manifest) {
+            del.sync(`${this.buildPath}/${key}`, {force: true});
+        }
+    }
 
     /**
      * Copy source maps to the build directory.
@@ -116,7 +150,7 @@ class VersionTask extends Elixir.Task {
                 if (error) return;
 
                 files.filter(file => fs.existsSync(`${file}.map`))
-                     .forEach(this.copyMap.bind(this));
+                    .forEach(this.copyMap.bind(this));
             });
         });
     }
@@ -128,11 +162,11 @@ class VersionTask extends Elixir.Task {
      * @param {string} srcMap
      */
     copyMap(srcMap) {
-        let destMap = srcMap.replace(this.distPath, this.buildPath +'/').replace('//', '/');
+        let destMap = srcMap.replace(this.distPath, this.buildPath + '/').replace('//', '/');
 
         if (destMap != srcMap) {
             fs.createReadStream(`${srcMap}.map`)
-              .pipe(fs.createWriteStream(`${destMap}.map`));
+                .pipe(fs.createWriteStream(`${destMap}.map`));
         }
     }
 
