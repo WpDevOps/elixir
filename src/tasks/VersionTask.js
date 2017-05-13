@@ -11,7 +11,7 @@ class VersionTask extends Elixir.Task {
     constructor(name, paths) {
         super(name, null, paths);
 
-        this.publicPath = Elixir.config.publicPath;
+        this.distPath = Elixir.config.distPath;
         this.buildPath = this.output.baseDir;
 
         if (this.src.baseDir == this.buildPath) {
@@ -48,11 +48,11 @@ class VersionTask extends Elixir.Task {
 
         return (
             gulp
-            .src(this.src.path, { base: `./${this.publicPath}` })
+            .src(this.src.path, { base: `./${this.distPath}` })
             .pipe($.rev())
             .pipe(this.updateVersionedPathInFiles($))
             .pipe(gulp.dest(this.buildPath))
-            .pipe($.rev.manifest())
+            .pipe($.rev.manifest('manifest.json'))
             .pipe(this.saveAs(gulp))
             .on('end', this.copyMaps.bind(this))
         );
@@ -73,7 +73,7 @@ class VersionTask extends Elixir.Task {
      * @param {Elixir.Plugins} $
      */
     updateVersionedPathInFiles($) {
-        let buildFolder = this.buildPath.replace(this.publicPath, '').replace('\\', '/');
+        let buildFolder = this.buildPath.replace(this.distPath, '').replace('\\', '/');
 
         this.recordStep('Rewriting File Paths');
 
@@ -120,7 +120,7 @@ class VersionTask extends Elixir.Task {
      * @param {string} srcMap
      */
     copyMap(srcMap) {
-        let destMap = srcMap.replace(this.publicPath, this.buildPath +'/').replace('//', '/');
+        let destMap = srcMap.replace(this.distPath, this.buildPath +'/').replace('//', '/');
 
         if (destMap != srcMap) {
             fs.createReadStream(`${srcMap}.map`)

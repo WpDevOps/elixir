@@ -28,6 +28,6 @@ function getPaths(src, buildPath) {
     buildPath = buildPath || Elixir.config.get('dist.versioning.buildFolder');
 
     return new Elixir.GulpPaths()
-        .src(src, Elixir.config.publicPath)
+        .src(src, Elixir.config.distPath)
         .output(buildPath);
 };

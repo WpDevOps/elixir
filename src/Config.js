@@ -41,12 +41,12 @@ const config = {
 
     /*
      |----------------------------------------------------------------
-     | Public Path
+     | Dist Path
      |----------------------------------------------------------------
      |
-     | Much like assets path, this public path property is prefixed to
-     | any paths in your application, that point to the public dir.
-     | It's useful, when a server requires a unique public path.
+     | Much like assets path, this dist path property is prefixed to
+     | any paths in your application, that point to the dist dir.
+     | It's useful, when a server requires a unique dist path.
      |
      */
 
@@ -155,12 +155,12 @@ const config = {
          |----------------------------------------------------------------
          |
          | Generally, your source files will be stored outside of your
-         | public directory, and then compiled/merged as necessary.
-         | This property represents the public specific folder.
+         | dist directory, and then compiled/merged as necessary.
+         | This property represents the dist specific folder.
          |
          */
 
-        outputFolder: 'styles',
+        outputFolder: 'css',
 
         /*
          |----------------------------------------------------------------
@@ -264,7 +264,7 @@ const config = {
          |----------------------------------------------------------------
          |
          | Once your vanilla JavaScript files have been compiled/merged,
-         | they will be saved to your public directory. This property
+         | they will be saved to your dist directory. This property
          | represents the name of the folder within that location.
          |
          */
@@ -390,7 +390,7 @@ config.get = function(path) {
 
     var segments = path.split('.');
 
-    // If the path begins with "assets" or "public," then
+    // If the path begins with "assets" or "dist," then
     // we can assume that the user wants to prefix the
     // given base url to their config path. Useful!
 

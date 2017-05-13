@@ -6,7 +6,7 @@ describe('Stylus Task', function() {
         Elixir(mix => mix.stylus('app.styl'));
 
         runGulp(() => {
-            shouldExist('./dist/styles/app.css',
+            shouldExist('./dist/css/app.css',
 `body {
   color: #f00;
 }

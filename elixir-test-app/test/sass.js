@@ -6,7 +6,7 @@ describe('Sass Task', function() {
         Elixir(mix => mix.sass('app.scss'));
 
         runGulp(() => {
-            shouldExist('./dist/styles/app.css');
+            shouldExist('./dist/css/app.css');
 
             done();
         });
@@ -16,7 +16,7 @@ describe('Sass Task', function() {
         Elixir(mix => mix.sass('app.scss'));
 
         runGulp(() => {
-            shouldExist('./dist/styles/app.css.map');
+            shouldExist('./dist/css/app.css.map');
 
             done();
         });
@@ -26,7 +26,7 @@ describe('Sass Task', function() {
         Elixir(mix => mix.sass('another.scss'));
 
         runGulp(() => {
-            shouldExist('./dist/styles/another.css');
+            shouldExist('./dist/css/another.css');
 
             done();
         });
