@@ -1,7 +1,8 @@
 import notify from 'gulp-notify';
+import * as path from "path";
 
 class Notification {
-    
+
     /**
      * Create a new Notification instance.
      */
@@ -27,7 +28,7 @@ class Notification {
         return notify({
             title: this.title,
             message: message,
-            icon: __dirname + '/../icons/wpdevops.png',
+            icon: path.join(__dirname, '/../icons/wpdevops.png'),
             onLast: true
         });
     }
@@ -43,7 +44,7 @@ class Notification {
         notify.onError({
             title: this.title,
             message: message + ': <%= error.message %>',
-            icon: __dirname + '/../icons/fail.png',
+            icon: path.join(__dirname, '/../icons/fail.png'),
             onLast: true
         })(e);
 
@@ -62,7 +63,7 @@ class Notification {
         return notify({
             title: 'Green!',
             message: `Your ${framework} tests passed!`,
-            icon: `${__dirname}/../icons/pass.png`,
+            icon: path.join(__dirname, '/../icons/pass.png'),
             onLast: true
         });
     }
