@@ -1,6 +1,6 @@
 {
   "name": "wpdevops-elixir",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Laravel Elixir Core for WpDevOps Grape starter theme",
   "main": "dist/index.js",
   "scripts": {
