@@ -46,6 +46,14 @@ class VersionTask extends Elixir.Task {
 
         this.deleteManifestFiles();
 
+        if(! Elixir.inProduction) {
+            return (
+                gulp
+                    .src(this.src.path, { base: `./${this.distPath}` })
+                    .pipe(this.recordStep('Skipping versioning'))
+            );
+        }
+
         return (
             gulp
             .src(this.src.path, { base: `./${this.distPath}` })
