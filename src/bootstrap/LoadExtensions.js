@@ -3,12 +3,11 @@
  * they have been installed by the user.
  */
 function loadOfficialExtensions() {
-    loadExtension('laravel-elixir-rollup-official');
-    loadExtension('laravel-elixir-coffeescript');
-    loadExtension('laravel-elixir-stylus');
-    loadExtension('laravel-elixir-browserify-official');
-    loadExtension('laravel-elixir-webpack-official');
-    loadExtension('laravel-elixir-browsersync-official');
+    loadExtension('@wpdevops/elixir-rollup');
+    loadExtension('@wpdevops/elixir-coffeescript');
+    loadExtension('@wpdevops/elixir-stylus');
+    loadExtension('@wpdevops/elixir-browserify');
+    loadExtension('@wpdevops/elixir-browsersync');
 
     require('require-dir')('../tasks/recipes');
 };

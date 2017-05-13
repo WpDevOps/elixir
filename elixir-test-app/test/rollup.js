@@ -6,18 +6,17 @@ describe('Rollup Task', function() {
         Elixir(mix => mix.rollup('main.js'));
 
         runGulp(() => {
-            shouldExist('./public/js/main.js',
-`(function () {
-    'use strict';
+            shouldExist('./dist/js/main.js',
+`(function (exports) {
+'use strict';
 
-    var SomeComponent = function SomeComponent() {
-        ['one', 'two'].map(function (item) { return alert(item); });
-    };
+var SomeComponent = function SomeComponent() {
+    ['one', 'two'].map(function (item) { return alert(item); });
+};
 
-    new SomeComponent();
+new SomeComponent();
 
-}());
-
+}((this.WpDevOpsElixirBundle = this.WpDevOpsElixirBundle || {})));
 //# sourceMappingURL=main.js.map
 `);
 

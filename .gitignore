@@ -1,6 +1,6 @@
 .idea/
 node_modules/
-npm-debug.log
+oldtests/npm-debug.log
 todo.txt
 dist/
 *.sublime-*

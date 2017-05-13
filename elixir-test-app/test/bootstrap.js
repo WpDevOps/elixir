@@ -1,4 +1,4 @@
-import Elixir from 'wpdevops-elixir';
+import Elixir from '@wpdevops/elixir';
 import chai from 'chai';
 import gulp from 'gulp';
 import remove from 'rimraf';
@@ -12,7 +12,8 @@ global.shouldExist = (file, contents) => {
 
     if (contents) {
         fs.readFileSync(file, { encoding: 'utf8' })
-            .should.eql(contents);
+            .replace(/(?:\r\n|\r|\n)/g, "")
+            .should.eql(contents.replace(/(?:\r\n|\r|\n)/g, ""));
     }
 };
 
@@ -27,7 +28,7 @@ global.runGulp = assertions => {
         remove.sync('./compress/file.min.css');
         remove.sync('./compress/*.map');
         remove.sync('./copy-dest');
-        remove.sync('./resources/assets/scripts');
-        remove.sync('./resources/assets/styles');
+        remove.sync('./assets/scripts');
+        remove.sync('./assets/styles');
     });
 };

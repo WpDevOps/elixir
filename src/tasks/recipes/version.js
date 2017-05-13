@@ -11,7 +11,7 @@ import VersionTask from '../VersionTask';
  |
  */
 
-Elixir.extend('version', function(src, buildPath) {
+Elixir.extend('version', function (src, buildPath) {
     new VersionTask('version', getPaths(src, buildPath));
 });
 
@@ -25,7 +25,7 @@ Elixir.extend('version', function(src, buildPath) {
  */
 function getPaths(src, buildPath) {
     src = Array.isArray(src) ? src : [src];
-    buildPath = buildPath || Elixir.config.get('public.versioning.buildFolder')
+    buildPath = buildPath || Elixir.config.get('dist.versioning.buildFolder');
 
     return new Elixir.GulpPaths()
         .src(src, Elixir.config.publicPath)

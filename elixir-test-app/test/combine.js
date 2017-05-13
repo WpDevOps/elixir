@@ -4,12 +4,12 @@ describe('Combine Task', function() {
 
     it('combines a given array of files.', done => {
         Elixir(mix => mix.combine([
-            'resources/assets/js/lib1.js',
-            './resources/assets/js/lib2.js'
-        ], './public/js/combined.js'));
+            'assets/js/lib1.js',
+            './assets/js/lib2.js'
+        ], './dist/js/combined.js'));
 
         runGulp(() => {
-            shouldExist('./public/js/combined.js',
+            shouldExist('./dist/js/combined.js',
 `var somelib;
 var anotherlib;`);
 
@@ -21,10 +21,10 @@ var anotherlib;`);
         Elixir(mix => mix.combine([
             'js/lib1.js',
             'js/lib2.js'
-        ], './public/js/combined.js', 'resources/assets'));
+        ], './dist/js/combined.js', 'assets'));
 
         runGulp(() => {
-            shouldExist('./public/js/combined.js',
+            shouldExist('./dist/js/combined.js',
 `var somelib;
 var anotherlib;`);
 

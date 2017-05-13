@@ -32,5 +32,5 @@ Elixir.extend('stylesIn', function(baseDir, output) {
 const getPaths = function(src, baseDir, output) {
     return new Elixir.GulpPaths()
         .src(src, baseDir || Elixir.config.get('assets.css.folder'))
-        .output(output || Elixir.config.get('public.css.outputFolder'), 'all.css');
+        .output(output || Elixir.config.get('dist.css.outputFolder'), 'all.css');
 };

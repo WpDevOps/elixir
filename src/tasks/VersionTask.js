@@ -85,7 +85,7 @@ class VersionTask extends Elixir.Task {
      * Empty all relevant files from the build directory.
      */
     deleteManifestFiles() {
-        let manifest = `${this.buildPath}/rev-manifest.json`;
+        let manifest = `${this.buildPath}/manifest.json`;
 
         if (! fs.existsSync(manifest)) return;
 

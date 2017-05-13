@@ -6,7 +6,7 @@ describe('Stylus Task', function() {
         Elixir(mix => mix.stylus('app.styl'));
 
         runGulp(() => {
-            shouldExist('./public/css/app.css',
+            shouldExist('./dist/styles/app.css',
 `body {
   color: #f00;
 }
@@ -20,10 +20,10 @@ describe('Stylus Task', function() {
     });
 
     it('compiles Stylus to a custom output file.', done => {
-        Elixir(mix => mix.stylus('app.styl', './public/out.css'));
+        Elixir(mix => mix.stylus('app.styl', './dist/out.css'));
 
         runGulp(() => {
-            shouldExist('./public/out.css',
+            shouldExist('./dist/out.css',
 `body {
   color: #f00;
 }

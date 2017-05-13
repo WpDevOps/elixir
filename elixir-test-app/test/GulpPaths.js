@@ -20,23 +20,24 @@ describe('Gulp Paths', function() {
     it('uses the src file name as the output name, if an output file is not set', () => {
         paths.src('src.scss').output('some/output', 'output.css');
 
-        expect(paths.output.path).to.equal('some/output/src.css');
+        expect(paths.output.path).to.equal('some\\output\\src.css');
     });
 
     it('uses a default output name if no alternative is available', () => {
         paths.src(['file.scss']).output('some/output', 'output.css');
 
-        expect(paths.output.path).to.equal('some/output/output.css');
+        expect(paths.output.path).to.equal('some\\output\\output.css');
     });
 
     it('prefixes a base directory', () => {
+
         expect(
             paths.prefix('some/path', 'some/prefix')
-        ).to.equal('some/prefix/some/path');
+        ).to.equal('some\\prefix\\some\\path');
 
         expect(
             paths.prefix(['one/path', 'second/path'], 'some/prefix')
-        ).to.eql(['some/prefix/one/path', 'some/prefix/second/path']);
+        ).to.eql(['some\\prefix\\one\\path', 'some\\prefix\\second\\path']);
 
         // For any path beginning with a period, it's assumed that the
         // user wants to ignore the prefix, and begin with the project
@@ -49,7 +50,7 @@ describe('Gulp Paths', function() {
     it('changes an extension', () => {
         expect(
             paths.changeExtension('some/path/foo.txt', '.png')
-        ).to.equal('some/path/foo.png');
+        ).to.equal('some\\path\\foo.png');
     });
 
     it('parses a file path', () => {

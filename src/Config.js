@@ -50,7 +50,7 @@ const config = {
      |
      */
 
-    publicPath: 'dist',
+    distPath: 'dist',
 
     /*
      |----------------------------------------------------------------
@@ -147,7 +147,7 @@ const config = {
          |
          */
 
-        folder: 'styles',
+        folder: 'css',
 
         /*
          |----------------------------------------------------------------
@@ -211,7 +211,7 @@ const config = {
          */
 
         sass: {
-            folder: 'styles',
+            folder: 'sass',
 
             search: '/**/*.+(sass|scss)',
 
@@ -234,7 +234,7 @@ const config = {
          */
 
         less: {
-            folder: 'styles',
+            folder: 'less',
 
             search: '/**/*.less',
 

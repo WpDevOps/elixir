@@ -6,17 +6,17 @@ describe('Styles Task', function() {
         Elixir(mix => mix.styles(['one.css', 'two.css']));
 
         runGulp(() => {
-            shouldExist('public/css/all.css');
+            shouldExist('dist/styles/all.css');
 
             done();
         });
     });
 
     it('merges to any file the user wishes', function(done) {
-        Elixir(mix => mix.styles(['one.css', 'two.css'], './public/css/merged.css'));
+        Elixir(mix => mix.styles(['one.css', 'two.css'], './dist/css/merged.css'));
 
         runGulp(() => {
-            shouldExist('public/css/merged.css');
+            shouldExist('dist/css/merged.css');
 
             done();
         });
@@ -25,13 +25,13 @@ describe('Styles Task', function() {
     it('applies a custom base directory', function(done) {
         Elixir(mix => {
             // We'll copy files over to a custom directory to test this.
-            mix.copy('./resources/assets/css', './resources/assets/styles');
+            mix.copy('./assets/css', './assets/styles');
 
-            mix.styles(['one.css', 'two.css'], null, './resources/assets/styles');
+            mix.styles(['one.css', 'two.css'], null, './assets/styles');
         });
 
         runGulp(() => {
-            shouldExist('public/css/all.css');
+            shouldExist('dist/styles/all.css');
 
             done();
         });

@@ -6,17 +6,17 @@ describe('Scripts Task', function() {
         Elixir(mix => mix.scripts(['lib1.js', 'lib2.js']));
 
         runGulp(() => {
-            shouldExist('public/js/all.js');
+            shouldExist('dist/js/all.js');
 
             done();
         });
     });
 
     it('merges to any file the user wishes', function(done) {
-        Elixir(mix => mix.scripts(['lib1.js', 'lib2.js'], './public/js/merged.js'));
+        Elixir(mix => mix.scripts(['lib1.js', 'lib2.js'], './dist/js/merged.js'));
 
         runGulp(() => {
-            shouldExist('public/js/merged.js');
+            shouldExist('dist/js/merged.js');
 
             done();
         });
@@ -25,13 +25,13 @@ describe('Scripts Task', function() {
     it('applies a custom base directory', function(done) {
         Elixir(mix => {
             // We'll copy files over to a custom directory to test this.
-            mix.copy('./resources/assets/js', './resources/assets/scripts');
+            mix.copy('./assets/js', './assets/scripts');
 
-            mix.scripts(['lib1.js', 'lib2.js'], null, './resources/assets/scripts');
+            mix.scripts(['lib1.js', 'lib2.js'], null, './assets/scripts');
         });
 
         runGulp(() => {
-            shouldExist('public/js/all.js');
+            shouldExist('dist/js/all.js');
 
             done();
         });

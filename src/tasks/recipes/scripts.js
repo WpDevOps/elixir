@@ -36,5 +36,5 @@ Elixir.extend('scriptsIn', function(baseDir, output, options) {
 function getPaths(src, baseDir, output) {
     return new Elixir.GulpPaths()
         .src(src, baseDir || Elixir.config.get('assets.js.folder'))
-        .output(output || Elixir.config.get('public.js.outputFolder'), 'all.js');
+        .output(output || Elixir.config.get('dist.js.outputFolder'), 'all.js');
 }

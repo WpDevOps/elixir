@@ -27,5 +27,5 @@ Elixir.extend('less', function(src, output, baseDir, options) {
 function getPaths(src, baseDir, output) {
     return new Elixir.GulpPaths()
         .src(src, baseDir || Elixir.config.get('assets.css.less.folder'))
-        .output(output || Elixir.config.get('public.css.outputFolder'), 'app.css');
+        .output(output || Elixir.config.get('dist.css.outputFolder'), 'app.css');
 };

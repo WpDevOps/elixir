@@ -6,7 +6,7 @@ describe('CoffeeScript Task', function() {
         Elixir(mix => mix.coffee('module.coffee'));
 
         runGulp(() => {
-            shouldExist('./public/js/module.js',
+            shouldExist('./dist/js/module.js',
 `(function() {
   var MyModule;
 
@@ -28,10 +28,10 @@ describe('CoffeeScript Task', function() {
     });
 
     it('compiles CoffeeScript to a custom output path.', done => {
-        Elixir(mix => mix.coffee('module.coffee', './public/out.js'));
+        Elixir(mix => mix.coffee('module.coffee', './dist/out.js'));
 
         runGulp(() => {
-            shouldExist('./public/out.js');
+            shouldExist('./dist/out.js');
 
             done();
         });
