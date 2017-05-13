@@ -46,14 +46,8 @@ class VersionTask extends Elixir.Task {
 
         this.deleteManifestFiles();
 
-        console.log(Elixir.inProduction);
-
         if (! Elixir.inProduction) {
-            return (
-                gulp
-                    .src(this.src.path, {base: `./${this.distPath}`})
-                    .pipe(this.skip(gulp))
-            );
+            return this.skip();
         }
 
         this.recordStep('Versioning');
@@ -82,12 +76,9 @@ class VersionTask extends Elixir.Task {
     /**
      * Not in production record
      *
-     * @param {object} gulp
      */
-    skip(gulp) {
+    skip() {
         this.recordStep('Skipping versioning, not in production');
-
-        return gulp;
     }
 
     /**

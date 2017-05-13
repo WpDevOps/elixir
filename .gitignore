@@ -4,3 +4,4 @@ oldtests/npm-debug.log
 todo.txt
 dist/
 *.sublime-*
+gulpfile.js
