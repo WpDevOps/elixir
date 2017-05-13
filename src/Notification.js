@@ -27,7 +27,7 @@ class Notification {
         return notify({
             title: this.title,
             message: message,
-            icon: __dirname + '/../icons/laravel.png',
+            icon: __dirname + '/../icons/wpdevops.png',
             onLast: true
         });
     }
