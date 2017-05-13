@@ -340,7 +340,7 @@ const config = {
      */
 
     versioning: {
-        buildFolder: null
+        buildFolder: ""
     },
 
     /*
